@@ -53,10 +53,12 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.info-box.clicked {
+.info-box.clicked,
+.quiz-box.clicked,
+.result-box.clicked {
     z-index: 5;
     opacity: 1;
-    pointer-events: none;
+    pointer-events: auto;
     transform: translate(-50%, -50%);
 }
 
@@ -112,7 +114,8 @@ body {
 .info-box .info-button button:hover,
 .quit:hover,
 .restart:hover,
-.quiz-box footer .next-btn:hover {
+.quiz-box footer .next-btn:hover,
+.quiz-box footer .check-result:hover {
     transform: scale(0.8);
 }
 
@@ -175,7 +178,7 @@ body {
 }
 
 .quiz-box section {
-    padding: 25px 30px;
+    padding: 25px 30px 0px 30px;
     background: white;
 }
 
@@ -230,32 +233,46 @@ body {
     font-size: 20px;
 }
 
+
+/* color change for options */
+
+.quiz-box section .option-list .option.correct {
+    color: green;
+    background-color: rgb(172, 240, 187);
+    border-color: rgb(172, 240, 187);
+}
+
+.quiz-box section .option-list .option.incorrect {
+    color: rgb(158, 22, 17);
+    background-color: rgb(247, 186, 186);
+    border-color: rgb(247, 186, 186);
+}
+
+.quiz-box section .option-list .option.enable {
+    pointer-events: auto;
+}
+
+
+/* disable options */
+
+.quiz-box section .option-list .option.disabled {
+    pointer-events: none;
+}
+
 .quiz-box footer {
     height: 60px;
     width: 100%;
     padding: 0 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.quiz-box footer .total-ques span {
-    display: flex;
-    user-select: none;
-}
-
-.quiz-box footer .total-ques span p {
-    font-weight: 600;
-    padding: 0 5px;
-}
-
-.quiz-box footer .total-ques span p:first-child {
-    padding-left: 0px;
+    justify-content: flex-end;
 }
 
 .quiz-box footer .next-btn {
+    display: none;
     height: 40px;
     padding: 0 13px;
+    margin: 0 5px;
     font-size: 18px;
     font-weight: 500;
     border: none;
@@ -264,6 +281,8 @@ body {
     background-color: var(--theme);
     cursor: pointer;
 }
+
+.quiz-box footer .check-result {}
 
 .result-box {
     background-color: white;
@@ -291,6 +310,10 @@ body {
     font-weight: 600;
 }
 
+.result-box .score-text {
+    margin-bottom: 5px;
+}
+
 .result-box .score-text span {
     display: flex;
     margin: 10px 0;
@@ -301,4 +324,10 @@ body {
 .result-box .score-text span p {
     font-weight: 700;
     padding: 0 5px;
+}
+
+#input {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
 }

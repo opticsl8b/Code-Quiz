@@ -23,9 +23,9 @@
             <span>Some Rules of the Quiz</span>
         </div>
         <div class="info-list">
-            <div class="info">1. You will have only <span>120 second</span> for the quiz.</div>
+            <div class="info">1. You will have <span>120 second</span> for the quiz.</div>
             <div class="info">2. Once answer is selected, cant be reselectd.</div>
-            <div class="info">3. Proving with wrong answer will subtract from the timer.</div>
+            <div class="info">3. Incorrect answer will subtract from the timer.</div>
             <div class="info">4. Timer will only stop once all the quiz are answered.</div>
             <div class="info">5. Points will be recorded with your name.</div>
         </div>
@@ -38,7 +38,7 @@
     <!-- Quiz box -->
     <div class="quiz-box">
         <header>
-            <div class="title">App</div>
+            <div class="title">Code Quiz</div>
             <div class="timer">
                 <div class="sec">120</div>
                 <div class="timer-text">Second Left</div>
@@ -46,7 +46,7 @@
         </header>
         <section>
             <div class="quiz-text">
-                <span>_______ is the process of finding errors and fixing them within a program.</span>
+                <!-- <span>_______ is the process of finding errors and fixing them within a program.</span> -->
             </div>
             <div class="option-list">
                 <div class="option">
@@ -68,9 +68,7 @@
 
         <!-- Quiz Footer -->
         <footer>
-            <div class="total-ques">
-                <span><p>2</p>of<p>5</p>Questions</span>
-            </div>
+            <!-- <button class="check-result">Check Result</button> -->
             <button class="next-btn">Next One</button>
         </footer>
     </div>
@@ -82,14 +80,21 @@
         </div>
         <div class="complete-text">You've Complete the Quiz!</div>
         <div class="score-text">
-            <span>and sorry, You got only<p>2</p> out of <p>5</p></p></span>
+            <span>You scored<p class="score">0</p> out of 120</span>
         </div>
+        <textarea name="name" id="input" cols="30" rows="1" placeholder="Please Enter Your Name Here" required></textarea>
         <div class="btns">
-            <button class="restart">Replay Quiz</button>
-            <button class="quit">Quit</button>
+            <!-- <button class="restart">Replay Quiz</button> -->
+            <button class="quit">Scoreboard</button>
         </div>
     </div>
+    <!-- Scoreboard -->
+    <div class="scoreboard-box"></div>
+    <header>
 
+    </header>
+
+    <script src="questions.js"></script>
     <script src="script.js"></script>
 </body>
 
