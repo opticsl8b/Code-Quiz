@@ -117,7 +117,8 @@ body {
 .quit:hover,
 .restart:hover,
 .quiz-box footer .next-btn:hover,
-.quiz-box footer .check-result:hover {
+.quiz-box footer .check-result:hover,
+.scoreboard-box .clear:hover {
     transform: scale(0.8);
 }
 
@@ -364,4 +365,29 @@ body {
     font-size: 20px;
     font-weight: 700;
     padding: 0 30px;
+}
+
+.scoreboard-box .scoreboard {
+    padding-top: 10px;
+}
+
+.scoreboard-box .scoreboard-btn {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 35px;
+}
+
+.scoreboard-box .clear {
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    background: var(--theme);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
 }
