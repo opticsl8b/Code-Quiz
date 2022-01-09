@@ -39,7 +39,10 @@ var new_score = document.querySelector(".score")
 // Timer event
 
 function endgame() {
+
+    // record final score
     new_score = time_remain;
+
     clearInterval(timer_count);
 
     // reset timer 
@@ -127,6 +130,7 @@ function optionSelected(answer) {
     for (let i = 0; i < disable_opt; i++) {
         option_list.children[i].classList.add("disabled");
     }
+    // don't show next button unless option is selected
     next_btn.style.display = "block";
 }
 
@@ -146,8 +150,7 @@ var replay_btn = result_box.querySelector(".restart");
 
 // Score button event
 var leaderboard = [];
-
-
+var scoreboard_box = document.querySelector(".scoreboard-box");
 
 score_btn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -157,5 +160,6 @@ score_btn.addEventListener("click", function(event) {
     }
     console.log(resultscore);
     localStorage.setItem("resultscore", JSON.stringify(resultscore));
-
+    result_box.classList.remove("clicked"); //hide the info box
+    scoreboard_box.classList.add("clicked"); // show scoreboard
 });
