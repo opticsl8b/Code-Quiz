@@ -11,7 +11,7 @@ var quiz_box = document.querySelector(".quiz-box");
 var timer_read = quiz_box.querySelector(".sec");
 var option_list = document.querySelector(".option-list");
 var next_btn = document.querySelector(".next-btn");
-var new_score = document.querySelector(".score");
+var scoreElement = document.querySelector(".score");
 var question_text = document.querySelector(".quiz-text");
 // elements to inform if answer was correct
 var tick_Icon = '<div class="icon-tick"><i class="far fa-check-circle"></i></div>';
@@ -26,7 +26,6 @@ var scoreboard_box = document.querySelector(".scoreboard-box");
 var scoreboard_content = document.querySelector(".scoreboard");
 
 // Getting elements -Page 5. 
-
 var replay_quiz = scoreboard_box.querySelector(".restart ");
 var clear_scores = scoreboard_box.querySelector(".clear");
 
@@ -59,8 +58,6 @@ var time_remain = 120;
 
 // endgame funtion
 function endgame() {
-    // record final score
-    new_score = time_remain;
     // reset timer back to 120 secs
     clearInterval(timer_count);
     time_remain = 120;
@@ -143,8 +140,8 @@ next_btn.addEventListener("click", function() {
         next_btn.style.display = "none";
     } else { // show Page 4. if it's the end of the quiz
         quiz_box.classList.remove("clicked"); //hide the quiz box
-        result_box.classList.add("clicked"); //show the result box
-        new_score.innerHTML = " " + time_remain + " ";
+        result_box.classList.add("clicked"); //show the result box with score
+        scoreElement.innerHTML = " " + time_remain + " ";
         endgame(); // stop timer and record score
     }
 });
@@ -165,12 +162,11 @@ function displayScores() {
     scoreboard_content.innerHTML = "";
     //sort scores in decending order  
     leaderboard.sort(compareScores);
-
-
     // create a loop adding content to the scoreboard
     for (var i = 0; i < leaderboard.length; i++) {
         var li = document.createElement("li");
-        li.textContent = leaderboard[i].name + " - " + leaderboard[i].score + " points.";
+        li.textContent =
+            "Rank " + [i + 1] + ".  " + leaderboard[i].name + " - " + leaderboard[i].score + " points.";
         scoreboard_content.appendChild(li);
     }
 }
@@ -193,7 +189,8 @@ score_btn.addEventListener("click", function(event) {
     }
     // object with resultscore and username
     var resultscore = {
-        score: new_score,
+        // score: new_score,
+        score: scoreElement.textContent,
         name: username_entered,
     }
     leaderboard.push(resultscore); // push the objct into leaderboard array

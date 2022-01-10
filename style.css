@@ -376,6 +376,10 @@ body {
     padding-top: 10px;
 }
 
+.scoreboard-box .scoreboard li {
+    list-style-type: none;
+}
+
 .scoreboard-box .scoreboard-btn {
     height: 60px;
     display: flex;
