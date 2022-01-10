@@ -28,7 +28,7 @@ body {
 }
 
 
-/*  start button  */
+/*  Page 1. start button  */
 
 .start-btn button {
     font-size: 25px;
@@ -43,7 +43,7 @@ body {
 }
 
 
-/* info box */
+/* Page 2.- Info page */
 
 .info-box {
     width: 540px;
@@ -53,6 +53,9 @@ body {
     pointer-events: none;
     transform: translate(-50%, -50%);
 }
+
+
+/* Responsive css setup */
 
 .info-box.clicked,
 .quiz-box.clicked,
@@ -113,17 +116,21 @@ body {
     cursor: pointer;
 }
 
+
+/* hover event setup */
+
 .info-box .info-button button:hover,
 .quit:hover,
 .restart:hover,
 .quiz-box footer .next-btn:hover,
 .quiz-box footer .check-result:hover,
-.scoreboard-box .clear:hover {
-    transform: scale(0.8);
+.scoreboard-box .clear:hover,
+.start-btn button:hover {
+    transform: scale(0.9);
 }
 
 
-/* Quiz Box */
+/* Page 3.- Question page */
 
 .quiz-box {
     width: 550px;
@@ -237,7 +244,7 @@ body {
 }
 
 
-/* color change for options */
+/* Responsive css setup on optione selected */
 
 .quiz-box section .option-list .option.correct {
     color: green;
@@ -256,7 +263,7 @@ body {
 }
 
 
-/* disable options */
+/* Responsive css setup - muti-selected disabled*/
 
 .quiz-box section .option-list .option.disabled {
     pointer-events: none;
@@ -285,10 +292,8 @@ body {
     cursor: pointer;
 }
 
-.quiz-box footer .check-result {}
 
-
-/* result box */
+/* Page 4. Result page */
 
 .result-box {
     background-color: white;
@@ -339,7 +344,7 @@ body {
 }
 
 
-/* leader board */
+/* Page 5. Scoreboard */
 
 .scoreboard-box {
     background-color: white;

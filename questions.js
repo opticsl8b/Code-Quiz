@@ -82,7 +82,7 @@ var questions = [
     {
 
         question: "4. A loop that never ends is referred to as a(n)_________.",
-        answer: "C. Recursive loop",
+        answer: "B. Infinite loop",
         options: [
             "A. While loop",
             "B. Infinite loop",

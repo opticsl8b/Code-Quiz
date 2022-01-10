@@ -22,6 +22,13 @@ var result_box = document.querySelector(".result-box");
 var score_btn = result_box.querySelector(".quit");
 var username = document.getElementById("input");
 var replay_btn = result_box.querySelector(".restart");
+var scoreboard_box = document.querySelector(".scoreboard-box");
+var scoreboard_content = document.querySelector(".scoreboard");
+
+// Getting elements -Page 5. 
+
+var replay_quiz = scoreboard_box.querySelector(".restart ");
+var clear_scores = scoreboard_box.querySelector(".clear");
 
 // Page 1.- Start page
 
@@ -52,10 +59,8 @@ var time_remain = 120;
 
 // endgame funtion
 function endgame() {
-
     // record final score
     new_score = time_remain;
-
     // reset timer back to 120 secs
     clearInterval(timer_count);
     time_remain = 120;
@@ -76,27 +81,6 @@ function timerStart() {
         }
     }, 1000)
 }
-
-// Next button click event
-next_btn.addEventListener("click", function() {
-
-    // show next question if its not the last page
-    if (question_count < questions.length - 1) {
-        question_count++;
-        showQuestion(question_count);
-
-        // only shows button if option was selected
-        next_btn.style.display = "none";
-
-        // show Page 4. if it's the end of the quiz
-    } else {
-        quiz_box.classList.remove("clicked"); //hide the quiz box
-        result_box.classList.add("clicked"); //show the result box
-        new_score.innerHTML = " " + time_remain + " ";
-        endgame(); // stop timer and record score
-
-    }
-});
 
 // Function that gets displays questions
 function showQuestion(question_count) {
@@ -148,18 +132,31 @@ function optionSelected(answer) {
     next_btn.style.display = "block";
 }
 
-// Page.4 Result page
+// Next button click event
+next_btn.addEventListener("click", function() {
 
-// replay button event
-var scoreboard_box = document.querySelector(".scoreboard-box");
-var scoreboard_content = document.querySelector(".scoreboard");
+    // show next question if its not the last page
+    if (question_count < questions.length - 1) {
+        question_count++;
+        showQuestion(question_count);
+        // only shows button if option was selected
+        next_btn.style.display = "none";
+    } else { // show Page 4. if it's the end of the quiz
+        quiz_box.classList.remove("clicked"); //hide the quiz box
+        result_box.classList.add("clicked"); //show the result box
+        new_score.innerHTML = " " + time_remain + " ";
+        endgame(); // stop timer and record score
+    }
+});
+
+// Page.4 Result page
 
 // make a array stores the scores
 var leaderboard = [];
 
 // function assists sort scores 
 function compareScores(a, b) {
-    return b.leaderboard - a.leaderboard;
+    return b.score - a.score;
 }
 
 // funtion displays score 
@@ -168,6 +165,8 @@ function displayScores() {
     scoreboard_content.innerHTML = "";
     //sort scores in decending order  
     leaderboard.sort(compareScores);
+
+
     // create a loop adding content to the scoreboard
     for (var i = 0; i < leaderboard.length; i++) {
         var li = document.createElement("li");
@@ -179,14 +178,6 @@ function displayScores() {
 // funtion stores scores in JSON string
 function storeScore() {
     localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-}
-
-// function loads scores
-function loadScores() {
-    var memory = JSON.stringify(leaderboard);
-    if (memory) {
-        leaderboard = memory
-    }
 }
 
 // Scoreboard button event
@@ -202,8 +193,8 @@ score_btn.addEventListener("click", function(event) {
     }
     // object with resultscore and username
     var resultscore = {
-        name: username_entered,
         score: new_score,
+        name: username_entered,
     }
     leaderboard.push(resultscore); // push the objct into leaderboard array
     // empty the input
@@ -215,17 +206,13 @@ score_btn.addEventListener("click", function(event) {
     scoreboard_box.classList.add("clicked"); // show scoreboard
 });
 
-// Page.5 scoreboard
-
-var replay_quiz = scoreboard_box.querySelector(".restart ");
-var clear_scores = scoreboard_box.querySelector(".clear");
+// Page 5. Scoreboard
 
 // Replay button event
 replay_quiz.addEventListener("click", function() {
     clearInterval(timer_count);
     scoreboard_box.classList.remove("clicked"); // hide the scoreboard box
-    // reset question count
-    question_count = 0;
+    question_count = 0; // reset question count
 })
 
 // Clear button event
